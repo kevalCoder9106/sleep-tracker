@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;500&display=swap'); /* font :light-300 bold-500 */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    .input-box{
+        @apply p-1 lg:p-2 mt-2 text-sm md:text-xl rounded-sm font-light;
+    }
+    .input-box{
+        border: none;
+        outline:none;
+        box-shadow: inset 2px 2px 5px gray;
+    }
+
+    .button{
+        @apply p-1 mt-4 bg-button text-sm md:text-xl rounded shadow-md hover:shadow-none transition-all delay-100
+    }
+}
