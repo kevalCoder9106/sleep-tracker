@@ -1,11 +1,14 @@
 import { DataContext } from "./DataContext";
 
 const DataState = ({ children }) => {
+    // host
+    const host = "https://better-sleep.herokuapp.com/"
+
     // add sleep data
     const addSleepDataAPICall = ({ date, sleepHours }) => {
         const token = localStorage.getItem("TOKEN")
 
-         const response = fetch('http://localhost:3001/addsleepdata',{
+         const response = fetch(`${host}addsleepdata`,{
              method: 'post',
              headers: {'Content-Type':'application/json'},
              body: JSON.stringify({ token: token, date: date, sleepHours: sleepHours })
@@ -29,7 +32,7 @@ const DataState = ({ children }) => {
     const getSleepDataAPICall = () => {
         const token = localStorage.getItem("TOKEN")
 
-        const response = fetch('http://localhost:3001/getsleepdata',{
+        const response = fetch(`${host}getsleepdata`,{
             method: 'post',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({ token: token })
@@ -53,7 +56,7 @@ const DataState = ({ children }) => {
     const getAverageAPICall = () => {
         const token = localStorage.getItem('TOKEN')
 
-        const response = fetch('http://localhost:3001/getaverage',{
+        const response = fetch(`${host}getaverage`,{
             method: 'post',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({ token: token })

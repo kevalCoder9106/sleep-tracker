@@ -2,6 +2,9 @@ import { AuthContext } from "./AuthContext";
 import { useState } from "react";
 
 const AuthState = ({ children }) => {
+    // host
+    const host = "https://better-sleep.herokuapp.com/"
+
     const [isLoggedIn,setIsLoggedIn] = useState(false)
 
     // Signout 
@@ -13,7 +16,7 @@ const AuthState = ({ children }) => {
     // Login API Call
     const loginAPICall = ({ username, password }) => {
         // fetch data 
-        const response = fetch("http://localhost:3001/login",{
+        const response = fetch(`${host}login`,{
             method: 'post',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({ username: username, password: password })
@@ -43,7 +46,7 @@ const AuthState = ({ children }) => {
     // Register API Call
     const registerAPICall = ({ username, email, password }) => {
         // fetch data
-        const response = fetch("http://localhost:3001/register",{
+        const response = fetch(`${host}register`,{
             method: 'post',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({username: username, email: email, password: password})
@@ -72,7 +75,7 @@ const AuthState = ({ children }) => {
     }
 
     const sendOTP = ({ username, email }) => {
-        const response = fetch("http://localhost:3001/sendgmail",{
+        const response = fetch(`${host}sendgmail`,{
             method: 'post',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({username: username, email: email})
@@ -96,7 +99,7 @@ const AuthState = ({ children }) => {
     const verifyAPICall = () => {
         const token = localStorage.getItem("TOKEN")
 
-        const response = fetch("http://localhost:3001/verify",{
+        const response = fetch(`${host}verify`,{
             method: "post",
             headers: {"Content-Type":"application/json"},
             body: JSON.stringify({ token: token })
